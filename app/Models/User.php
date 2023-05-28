@@ -17,7 +17,7 @@ class User extends Model
     # Relationships
     public function serviceOrders()
     {
-        return $this->hasMany(ServiceOrder::class);
+        return $this->hasMany(ServiceOrder::class, 'userId', 'id');
     }
 
 }
