@@ -16,7 +16,7 @@ class ServiceOrder extends Model
         'exitDateTime',
         'priceType',
         'price',
-        'user_id'
+        'userId'
     ];
 
     # Casts
