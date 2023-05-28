@@ -16,4 +16,7 @@ use App\Http\Controllers\ApiController;
 */
 
 # Create service order
-Route::post('/service-order', [ApiController::class, 'createServiceOrder']);
+Route::post('/service-order/new', [ApiController::class, 'createServiceOrder']);
+
+# Get service orders
+Route::get('/service-orders', [ApiController::class, 'getServiceOrders']);
