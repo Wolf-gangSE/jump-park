@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ApiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+# Create user
+Route::post('/user/new', [ApiController::class, 'createUser']);
+
+# Create service order
+Route::post('/service-order/new', [ApiController::class, 'createServiceOrder']);
+
+# Get service orders
+Route::get('/service-orders', [ApiController::class, 'getServiceOrders']);
