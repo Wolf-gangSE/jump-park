@@ -15,6 +15,9 @@ use App\Http\Controllers\ApiController;
 |
 */
 
+# Create user
+Route::post('/user/new', [ApiController::class, 'createUser']);
+
 # Create service order
 Route::post('/service-order/new', [ApiController::class, 'createServiceOrder']);
 
