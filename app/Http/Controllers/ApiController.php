@@ -9,6 +9,27 @@ use App\Models\User;
 
 class ApiController extends Controller
 {
+    public function createUser(Request $request)
+    {
+        try {
+
+            # Validate request
+            $request->validate([
+                'name' => 'required|string',
+            ]);
+
+            # Create user
+            $user = User::create([
+                'name' => $request->name,
+            ]);
+
+            return response()->json(['message' => 'User created successfully!'], 200);
+
+        } catch (\Exception $e) {
+            return response()->json(['message' => "Error creating user: {$e->getMessage()}"], 500);
+        }
+    }
+    
     public function createServiceOrder(Request $request)
     {
         try {
@@ -70,7 +91,7 @@ class ApiController extends Controller
             # Add user name to service orders and remove user_id
             foreach ($serviceOrders as $serviceOrder) {
                 $serviceOrder->userName = $serviceOrder->user->name;
-                unset($serviceOrder->user_id);
+                unset($serviceOrder->userId);
                 unset($serviceOrder->user);
             }
 
